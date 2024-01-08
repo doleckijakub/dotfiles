@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -x
+
+if [ "$1" == "get" ]; then
+	UPDATE_LOG_FILE=/tmp/update-log
+	nixos-rebuild dry-run --upgrade 2> $UPDATE_LOG_FILE
+	PATHS=$(grep --color=never -oE "[0-9]+ paths" $UPDATE_LOG_FILE | awk "{print \$1}")
+	echo "$PATHS  "
+elif [ "$1" == "update" ]; then
+	kitty --title "update" sh -c "sudo nixos-rebuild switch --upgrade"
+fi
