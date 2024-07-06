@@ -1,0 +1,45 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 25,
+    // "modules-left": [
+        // "custom/launch_wofi"
+        // "custom/launch_firefox",
+        // "custom/launch_thunderbird",
+        // "custom/launch_kitty",
+        // "custom/launch_thunar"
+    // ],
+    "modules-center": [
+		"wlr/taskbar"
+	],
+    "modules-right": [
+		"custom/updates"
+	],
+
+    "include": [
+    ],
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 24,
+        "all-outputs": true,
+        "tooltip-format": "{name} - {title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "wofi"
+        ]
+    },
+
+    "custom/updates": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/updates get",
+        "on-click": "~/.config/waybar/scripts/updates update",
+        "interval": 300,
+        "tooltip": true
+    }
+}
