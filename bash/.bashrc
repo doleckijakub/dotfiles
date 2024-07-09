@@ -7,9 +7,10 @@ export VISUAL=nvim
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# if [[ "xterm-kitty" == $TERM ]]; then
-# 	kitty +kitten icat --align left `find ~/.pokemon | shuf -n 1`
-# fi
+if [[ "xterm-kitty" == $TERM ]]; then
+	alias ssh="kitten ssh";
+	kitty +kitten icat --align left `find $HOME/.config/pokemon/sprites | shuf -n 1`;
+fi
 
 shopt -s globstar
 shopt -s checkwinsize
@@ -29,8 +30,30 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 tabs 4
 
 source $HOME/.bash_aliases
+source $HOME/.bash_secrets
 
-set-ps1() {
+cd_or_sshfs() {
+	grep --color=never fuse.sshfs /etc/mtab | while read -r line ; do
+		path=$(echo $line | awk '{print $2}')
+		echo "'$1'"
+		echo "'$path'"
+		if [[ "$1" == "$path" ]]; then
+			ssh server-btw
+		fi
+		# if [[ "\$PWD" =~ "$path" ]]; then echo path==pwd; fi
+		# echo "\"$path\" path"
+		# echo "\"\$PWD\" pwd"
+		# [ '$path' == $(pwd) ] && return
+		# mount_point=$(echo $line | awk '{print $1}' | tr ':' ' ')
+		# echo "$path $mount_point"
+	done
+
+	builtin cd $@
+}
+
+alias cd=cd_or_sshfs
+
+set_ps1() {
 	export GIT_PS1_SHOWDIRTYSTATE=1
 	source ~/.git-prompt.sh
 
@@ -49,7 +72,7 @@ set-ps1() {
 	export PS1="$L1$L2"
 }
 
-set-ps1
+set_ps1
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
