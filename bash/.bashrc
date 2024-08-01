@@ -82,5 +82,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+setxkbmap pl
+
 export PATH="$PATH:/home/jacob/sat"
 source /usr/share/doc/pkgfile/command-not-found.bash
