@@ -5,7 +5,7 @@ hyprland.conf: $(shell hostname)/*.conf common/*.conf | plugins
 plugins: plugins/hyprsplit/hyprsplit.so
 
 plugins/hyprsplit/hyprsplit.so: plugins/hyprsplit/src/*.cpp | plugins/hyprsplit/src/*.hpp
-	plugins/hyprsplit && make
+	cd plugins/hyprsplit && make
 
 .PHONY: clean
 clean:
