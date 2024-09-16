@@ -1,3 +1,6 @@
+[submodule "alacritty"]
+	path = alacritty
+	url = https://github.com/catppuccin/alacritty
 [submodule "hypr/plugins/hyprsplit"]
 	path = hypr/plugins/hyprsplit
 	url = https://github.com/shezdy/hyprsplit
