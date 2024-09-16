@@ -1,0 +1,40 @@
+import = ["/home/jacob/.config/alacritty/catppuccin-mocha.toml"]
+
+[colors.vi_mode_cursor]
+cursor = "0x98971a"
+text = "CellBackground"
+
+[cursor]
+thickness = 0.25
+vi_mode_style = "Block"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "alacritty"
+
+[font]
+builtin_box_drawing = true
+size = 10
+
+[font.normal]
+family = "DejaVu Sans Mono"
+style = "Book"
+
+[font.bold]
+family = "DejaVu Sans Mono"
+style = "Bold"
+
+[font.italic]
+family = "DejaVu Sans Mono"
+style = "Oblique"
+
+[font.bold_italic]
+family = "DejaVu Sans Mono"
+style = "Bold Oblique"
+
+[window]
+decorations = "none"
+opacity = 0.8
