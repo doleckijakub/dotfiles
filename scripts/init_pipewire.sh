@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-killall -9 pipewire
-killall -9 pipewire-pulse
-killall -9 wireplumber
+set -x
+killall -9e pipewire pipewire-pulse wireplumber
 sleep 1
-pipewire &
-pipewire-pulse &
-wireplumber &
+pipewire & pipewire-pulse & wireplumber &
