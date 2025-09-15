@@ -8,7 +8,8 @@ for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
 done
 
 xdotool mousemove 20 20
-xdotool mousemove 960 540
+# xdotool mousemove 960 540
+xdotool mousemove 2880 540
 
 bspc config border_width         6
 bspc config window_gap          12

@@ -9,7 +9,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 if [[ "xterm-kitty" == $TERM ]]; then
 	alias ssh="kitten ssh";
-	kitty +kitten icat --align left `find $HOME/.config/pokemon/sprites | shuf -n 1`;
+	kitty +kitten icat --align left `find $HOME/.config/pokemon/sprites -type f | shuf -n 1`;
 fi
 
 shopt -s globstar
@@ -21,9 +21,9 @@ shopt -s dotglob
 shopt -s histappend
 shopt -s expand_aliases
 
-HISTSIZE=1000
+HISTSIZE=100000
 HISTCONTROL=ignoreboth
-HISTFILESIZE=2000
+HISTFILESIZE=20000
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -51,7 +51,7 @@ cd_or_sshfs() {
 	builtin cd $@
 }
 
-alias cd=cd_or_sshfs
+# alias cd=cd_or_sshfs
 
 set_ps1() {
 	export GIT_PS1_SHOWDIRTYSTATE=1
@@ -82,7 +82,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
-setxkbmap pl
+# setxkbmap pl
 
-export PATH="$PATH:/home/jacob/sat"
+export PATH="/opt/bin:$PATH:$HOME/.local/bin:$HOME/.config/scripts"
+export npm_config_prefix="$HOME/.local"
 source /usr/share/doc/pkgfile/command-not-found.bash
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+	while [ true ]; do
+		brightnessctl s 100%
+		# Hyprland
+		startx
+	done
+fi
