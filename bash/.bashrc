@@ -86,9 +86,12 @@ fi
 
 export PATH="/opt/bin:$PATH:$HOME/.local/bin:$HOME/.config/scripts"
 export npm_config_prefix="$HOME/.local"
-source /usr/share/doc/pkgfile/command-not-found.bash
 
-if [ "$(tty)" = "/dev/tty1" ]; then
+if [[ "$(. /etc/os-release && echo $ID)" == "artix" ]]; then
+	source /usr/share/doc/pkgfile/command-not-found.bash
+fi
+
+if [[ "$(hostname)" == "laptop-btw" && "$(tty)" == "/dev/tty1" ]]; then
 	while [ true ]; do
 		brightnessctl s 100%
 		# Hyprland
