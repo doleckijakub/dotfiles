@@ -7,7 +7,7 @@ export VISUAL=nvim
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-if [[ "xterm-kitty" == $TERM ]]; then
+if [[ "$(hostname)" == "laptop-btw" && "xterm-kitty" == $TERM ]]; then
 	alias ssh="kitten ssh";
 	kitty +kitten icat --align left `find $HOME/.config/pokemon/sprites -type f | shuf -n 1`;
 fi
